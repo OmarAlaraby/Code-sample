@@ -1,0 +1,310 @@
+[
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "accounts.models",
+        "description": "accounts.models",
+        "isExtraImport": true,
+        "detail": "accounts.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "accounts.models",
+        "description": "accounts.models",
+        "isExtraImport": true,
+        "detail": "accounts.models",
+        "documentation": {}
+    },
+    {
+        "label": "userManager",
+        "importPath": "accounts.models",
+        "description": "accounts.models",
+        "isExtraImport": true,
+        "detail": "accounts.models",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "django.utils",
+        "description": "django.utils",
+        "isExtraImport": true,
+        "detail": "django.utils",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "importPath": "project.settings",
+        "description": "project.settings",
+        "isExtraImport": true,
+        "detail": "project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "viewsets",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "IsAdminOrReadOnly",
+        "importPath": "project.permissions",
+        "description": "project.permissions",
+        "isExtraImport": true,
+        "detail": "project.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "permission_classes",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "cache_page",
+        "importPath": "django.views.decorators.cache",
+        "description": "django.views.decorators.cache",
+        "isExtraImport": true,
+        "detail": "django.views.decorators.cache",
+        "documentation": {}
+    },
+    {
+        "label": "method_decorator",
+        "importPath": "django.utils.decorators",
+        "description": "django.utils.decorators",
+        "isExtraImport": true,
+        "detail": "django.utils.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "Service",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Service(models.Model):\n    title = models.CharField(max_length=100)\n    description = models.TextField(blank=True, null=True)\n    users = models.ManyToManyField(User, related_name='services', blank=True)\n    price = models.IntegerField()\n    dead_line = models.DateField(blank=True ,auto_now=False, auto_now_add=False)\n    def is_open(self) :\n        return self.dead_line > timezone.now().date()\nclass Housing(Service):\n    def __str__(self):",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Housing",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Housing(Service):\n    def __str__(self):\n        return self.title\nclass Transportation(Service):\n    def __str__(self):\n        return self.title\nclass Team(models.Model) :\n    team_name = models.CharField(max_length=50, unique=True)\n    contestants = models.ManyToManyField(User, related_name='ecpcq_team', blank=True)\n    coach = models.ForeignKey(User, related_name='coached_teams', on_delete=models.PROTECT, null=True)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Transportation",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Transportation(Service):\n    def __str__(self):\n        return self.title\nclass Team(models.Model) :\n    team_name = models.CharField(max_length=50, unique=True)\n    contestants = models.ManyToManyField(User, related_name='ecpcq_team', blank=True)\n    coach = models.ForeignKey(User, related_name='coached_teams', on_delete=models.PROTECT, null=True)\n    is_paid = models.BooleanField(default=False)\n    contest = models.ForeignKey('ECPCQ', related_name='teams', on_delete=models.CASCADE, null=True)\n    def __str__(self):",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "Team",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Team(models.Model) :\n    team_name = models.CharField(max_length=50, unique=True)\n    contestants = models.ManyToManyField(User, related_name='ecpcq_team', blank=True)\n    coach = models.ForeignKey(User, related_name='coached_teams', on_delete=models.PROTECT, null=True)\n    is_paid = models.BooleanField(default=False)\n    contest = models.ForeignKey('ECPCQ', related_name='teams', on_delete=models.CASCADE, null=True)\n    def __str__(self):\n        return self.team_name\nclass ECPCQ(models.Model):\n    title = models.CharField(max_length=50)",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "ECPCQ",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class ECPCQ(models.Model):\n    title = models.CharField(max_length=50)\n    description = models.TextField(blank=True, null=True)\n    requirments = models.TextField(blank=True, null=True)\n    contest_date = models.DateField(auto_now=False, auto_now_add=False)\n    dead_line = models.DateField(null=False, auto_now=False, auto_now_add=False)\n    def is_open(self) :\n        return self.dead_line > timezone.now().date()\n    def __str__(self):\n        return self.title",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "housing_view",
+        "kind": 6,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "class housing_view(viewsets.ModelViewSet):\n    queryset = Housing.objects.all()\n    serializer_class = housingSerializers\n    permission_classes = [IsAdminOrReadOnly]\n    def create(self, request, *args, **kwargs):\n        if Housing.objects.exists() :\n            return Response({\"Error\" : \"you can't create two Housing registration in the same time\"}, status.HTTP_400_BAD_REQUEST)\n        serializer = self.get_serializer(data=request.data)\n        if serializer.is_valid():\n            serializer.save()",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "transportation_view",
+        "kind": 6,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "class transportation_view(viewsets.ModelViewSet):\n    queryset = Transportation.objects.all()\n    serializer_class = transportationSerializers\n    permission_classes = [IsAdminOrReadOnly]\n    def create(self, request, *args, **kwargs):\n        if Transportation.objects.exists() :\n            return Response({\"Error\" : \"you can't create two Transportaion registraion in the same time\"}, status.HTTP_400_BAD_REQUEST)\n        serializer = self.get_serializer(data=request.data)\n        if serializer.is_valid():\n            serializer.save()",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "team_view",
+        "kind": 6,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "class team_view(viewsets.ModelViewSet):\n    queryset = Team.objects.all()\n    serializer_class = teamSerializers\n    permission_classes = [IsAdminOrReadOnly]\n    # @method_decorator(cache_page(60 * 15))\n    def list(self, *args, **kwargs):\n        return super().list(*args, **kwargs)\n    # @method_decorator(cache_page(60 * 15))\n    def retrieve(self, request, *args, **kwargs):\n        return super().retrieve(request, *args, **kwargs)",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "ecpcq_view",
+        "kind": 6,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "class ecpcq_view(viewsets.ModelViewSet):\n    queryset = ECPCQ.objects.all()\n    serializer_class = ecpcqSerializers\n    permission_classes = [IsAdminOrReadOnly]\n    def create(self, request, *args, **kwargs):\n        if ECPCQ.objects.exists() :\n            return Response({\"Error\" : \"you can't create two ECPCQ registraion in the same time\"}, status.HTTP_400_BAD_REQUEST)\n        serializer = self.get_serializer(data=request.data)\n        if serializer.is_valid():\n            serializer.save()",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "is_registered",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def is_registered(user , obj) :\n    return user.is_authenticated and user in obj.users.all()\nclass housing_view(viewsets.ModelViewSet):\n    queryset = Housing.objects.all()\n    serializer_class = housingSerializers\n    permission_classes = [IsAdminOrReadOnly]\n    def create(self, request, *args, **kwargs):\n        if Housing.objects.exists() :\n            return Response({\"Error\" : \"you can't create two Housing registration in the same time\"}, status.HTTP_400_BAD_REQUEST)\n        serializer = self.get_serializer(data=request.data)",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "coach_included",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def coach_included(first_contestant, second_contestant, third_contestant) :\n    checker_results = [False, []]\n    if first_contestant.groups.filter(name='Coaches').exists() :\n        checker_results[0] = True\n        checker_results[1].append(\"You are a coach\")\n    if second_contestant.groups.filter(name='Coaches').exists() :\n        checker_results[0] = True\n        checker_results[1].append(f\"{second_contestant.username} is a coach\")\n    if third_contestant.groups.filter(name='Coaches').exists() :\n        checker_results[0] = True",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "unregisters_users",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def unregisters_users(first_contestant, second_contestant, third_contestant):\n    if first_contestant.ecpcq_team.exists() :\n        return False\n    if second_contestant.ecpcq_team.exists() :\n        return False\n    if third_contestant.ecpcq_team.exists() :\n        return False\n    return True\ndef all_users_virified(first_contestant, second_contestant, third_contestant) :\n    checker_results = [True, []]",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "all_users_virified",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def all_users_virified(first_contestant, second_contestant, third_contestant) :\n    checker_results = [True, []]\n    if not first_contestant.is_verified :\n        checker_results[0] = False\n        checker_results[1].append(\"You are not verified\")\n    if not second_contestant.is_verified :\n        checker_results[0] = False\n        checker_results[1].append(\"The second contestant is not verified\")\n    if not third_contestant.is_verified :\n        checker_results[0] = False",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "not_unique_users",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def not_unique_users(first_contestant, second_contestant, third_contestant):\n    return first_contestant == second_contestant or first_contestant == third_contestant or second_contestant == third_contestant\n#######################################\n@api_view(['POST'])\n@permission_classes([IsAuthenticated])\ndef ecpcq_register(request):\n    if not ECPCQ.objects.exists() and ECPCQ.objects.exists().is_open():\n        return Response({\"Error\" : \"there is no ECPCQ registration\"}, status.HTTP_400_BAD_REQUEST)\n    ecpcq = ECPCQ.objects.first()\n    first_contestant = request.user",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "ecpcq_register",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def ecpcq_register(request):\n    if not ECPCQ.objects.exists() and ECPCQ.objects.exists().is_open():\n        return Response({\"Error\" : \"there is no ECPCQ registration\"}, status.HTTP_400_BAD_REQUEST)\n    ecpcq = ECPCQ.objects.first()\n    first_contestant = request.user\n    message = []\n    try :\n        second_contestant = User.objects.get(username=request.data.get('second_participant'))\n    except :\n        message.append(\"Invalid username for the second contestant\")",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "ecpcq_unregister",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def ecpcq_unregister(request) :\n    if not ECPCQ.objects.exists() :\n        return Response({\"Error\" : \"There is no ECPCQ registration\"}, status.HTTP_400_BAD_REQUEST)\n    user = request.user\n    if not user.ecpcq_team.exists() :\n        return Response({\"Error\" : \"You are not registered in ECPCQ\"}, status.HTTP_400_BAD_REQUEST)\n    user.ecpcq_team.first().delete()\n    return Response({\"Success\" : \"You have unregistered\"}, status.HTTP_201_CREATED)\n@api_view(['POST'])\n@permission_classes([IsAuthenticated])",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "transportaion_register",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def transportaion_register(request):\n    if not Transportation.objects.exists() and Transportation.objects.first().is_open():\n        return Response({\"Error\" : \"There is no Transportation registration\"}, status.HTTP_400_BAD_REQUEST)\n    if not request.user.is_verified :\n        return Response({\"Error\" : \"You are not virified\"}, status.HTTP_400_BAD_REQUEST)\n    transportation = Transportation.objects.first()\n    user = request.user\n    transportation.users.add(user)\n    transportation.save()\n    return Response({\"Success\" : \"You have registered successfully\"}, status.HTTP_201_CREATED)",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "transportaion_unregister",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def transportaion_unregister(request):\n    if not Transportation.objects.exists() :\n        return Response({\"Error\" : \"There is no Transportation registration\"}, status.HTTP_400_BAD_REQUEST)\n    transportation = Transportation.objects.first()\n    user = request.user\n    transportation.users.remove(user)\n    transportation.save()\n    return Response({\"Success\" : \"You have unregistered\"}, status.HTTP_201_CREATED)\n@api_view(['POST'])\n@permission_classes([IsAuthenticated])",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "housing_register",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def housing_register(request):\n    if not Housing.objects.exists() and Housing.objects.first().is_open():\n        return Response({\"Error\" : \"There is no Housing registration\"}, status.HTTP_400_BAD_REQUEST)\n    if not request.user.is_verified :\n        return Response({\"Error\" : \"You are not virified\"}, status.HTTP_400_BAD_REQUEST)\n    housing = Housing.objects.first()\n    user = request.user\n    housing.users.add(user)\n    housing.save()\n    return Response({\"Success\" : \"You have registered successfully\"}, status.HTTP_201_CREATED)",
+        "detail": "views",
+        "documentation": {}
+    },
+    {
+        "label": "housing_unregister",
+        "kind": 2,
+        "importPath": "views",
+        "description": "views",
+        "peekOfCode": "def housing_unregister(request):\n    if not Housing.objects.exists() :\n        return Response({\"Error\" : \"There is no Housing registration\"}, status.HTTP_400_BAD_REQUEST)\n    housing = Housing.objects.first()\n    user = request.user\n    housing.users.remove(user)\n    housing.save()\n    return Response({\"Success\" : \"You have unregistered\"}, status.HTTP_201_CREATED)",
+        "detail": "views",
+        "documentation": {}
+    }
+]
